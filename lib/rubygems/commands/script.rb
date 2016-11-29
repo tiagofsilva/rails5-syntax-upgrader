@@ -47,8 +47,3 @@ class Rails5Upgrader
 	}
 
 end
-
-upgrader = Rails5Upgrader.new(ARGV[0])
-upgrader.replace_hash_rocket
-upgrader.replace_requests_on_test_case_controller
-
