@@ -1,6 +1,4 @@
-require_relative 'regex_replacer'
-
-class RubySyntaxUpgrader::UpgradeRails5TestCaseSyntax
+class UpgradeRails5TestCaseSyntax
   include ::RegexReplacer
 
   attr_reader :filepath

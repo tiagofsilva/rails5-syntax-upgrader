@@ -1,6 +1,4 @@
-require_relative 'regex_replacer'
-
-class RubySyntaxUpgrader::UpgradeHashRocketSyntax
+class UpgradeHashRocketSyntax
 	include ::RegexReplacer
 
 	attr_reader :filepath
