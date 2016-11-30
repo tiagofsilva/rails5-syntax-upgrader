@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["aeroboom@gmail.com"]
   spec.summary       = %q{A few Rake tasks to upgrade Ruby and Rails syntax on a project(Ruby 2.3 and Rails 5)}
   #spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = "github.com/tiagofsilva/ruby-syntax-upgrader"
+  spec.homepage      = "http://rubygems.org/gems/ruby-syntax-upgrader"
   spec.license       = "MIT"
 
   #spec.files         = `git ls-files -z`.split("\x0")
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "awesome_print", "~> 1.7.0"
 
-  spec.add_development_dependency "bundler", "~> 1.12.5"
+  spec.add_development_dependency "bundler", "~> 1.13.6"
   spec.add_development_dependency "rake", "~> 11.2.2"
   spec.add_development_dependency "pry", "~> 0.10.4"
   spec.add_development_dependency "rspec", "~> 3.5.0"
