@@ -2,3 +2,7 @@ require 'rake'
 
 module RubySyntaxUpgrader
 end
+
+require_relative 'ruby_syntax_upgrader/regex_replacer'
+require_relative 'ruby_syntax_upgrader/upgrade_hash_rocket_syntax'
+require_relative 'ruby_syntax_upgrader/upgrade_rails5_test_case_syntax'
