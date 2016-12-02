@@ -2,15 +2,19 @@ module RubySyntaxUpgrader
 	class UpgradeHashRocketSyntax
 		include RubySyntaxUpgrader::RegexReplacer
 
-		attr_reader :filepath
+		attr_accessor :source
+		attr_reader :commit
 
-		def initialize(filepath)
-			@filepath = filepath
+		def initialize(source:, commit: true)
+			@source = source
+			@commit = commit
+			raise 'Source file must be passed' unless source
 		end
 
 		def execute
-			regex_replace(
-				filepath: filepath, 
+			puts regex_replace(
+				source: source,
+				commit: commit,
 				pattern: HASH_ROCKET_REGEX[:pattern],
 				replacement: HASH_ROCKET_REGEX[:replacement]
 			)
