@@ -2,6 +2,7 @@ require 'simplecov'
 SimpleCov.start
 
 require 'pry'
+require_relative './lib'
 
 Dir[
   # Requires supporting ruby files with custom matchers and macros, etc,

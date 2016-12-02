@@ -1,8 +1,8 @@
-a = { :bar => foo }
-b = { :bar => [1,2,3] }
-c = { :bar => 'foo', :baz => "foo" }
-d = {:bar => 10 }
-e = { :a => { :b=> :c => {} } }
+a = { bar: foo }
+b = { bar: [1,2,3] }
+c = { bar: 'foo', baz: "foo" }
+d = {bar: 10 }
+e = { a: { :b=> { c: {} } } }
 f = { bar: {:foo=>:foobar}}
 g = :bar => /[a-z0-9]*/
 h = :bar => /(.+)[:a-z]/
