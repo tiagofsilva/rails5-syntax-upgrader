@@ -12,7 +12,7 @@ module RubySyntaxUpgrader
 		end
 
 		def execute
-			puts regex_replace(
+			regex_replace(
 				source: source,
 				commit: commit,
 				pattern: HASH_ROCKET_REGEX[:pattern],
