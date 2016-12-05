@@ -12,20 +12,29 @@ module RubySyntaxUpgrader
 		end
 
 		def execute
-			regex_replace(
-				source: source,
-				commit: commit,
-				pattern: HASH_ROCKET_REGEX[:pattern],
-				replacement: HASH_ROCKET_REGEX[:replacement]
-			)
+			files = File.file?(source) ? [source] : files_from_source_dir
+			
+			files.each do |file|
+				regex_replace(
+					file: file,
+					commit: commit,
+					pattern: HASH_ROCKET_REGEX[:pattern],
+					replacement: HASH_ROCKET_REGEX[:replacement]
+				)
+			end
 		end
 
-		private
+	private
 
 		HASH_ROCKET_REGEX = {
-			pattern: /:([a-z0-9_]+)\s=>(\s[a-zA-Z0-9_.'"{}\[\]]+)/, 
+			pattern: /:([a-z0-9_]+)\s=>(\s[a-zA-Z0-9_.'"{}\[\]]+)/,
 			replacement: '\1:\2'
 		}
+
+		def files_from_source_dir
+			Dir[source, '**/*']
+				.select { |f| ['.rb', '.erb'].include?(File.extname(f)) }	
+		end
 
 	end
 end
