@@ -2,8 +2,7 @@ module RubySyntaxUpgrader
 	class UpgradeHashRocketSyntax
 		include RubySyntaxUpgrader::RegexReplacer
 
-		attr_accessor :source
-		attr_reader :commit
+		attr_accessor :source, :commit
 
 		def initialize(source:, commit: true)
 			@source = source
@@ -13,7 +12,6 @@ module RubySyntaxUpgrader
 
 		def execute
 			files = File.file?(source) ? [source] : files_from_source_dir
-			
 			files.each do |file|
 				regex_replace(
 					file: file,
@@ -32,7 +30,7 @@ module RubySyntaxUpgrader
 		}
 
 		def files_from_source_dir
-			Dir[source, '**/*']
+			Dir[File.join(source, '**/*')]
 				.select { |f| ['.rb', '.erb'].include?(File.extname(f)) }	
 		end
 
