@@ -57,19 +57,41 @@ describe RubySyntaxUpgrader::UpgradeHashRocketSyntax do
 	end
 
   describe '#execute' do
-    subject { RubySyntaxUpgrader::UpgradeHashRocketSyntax
-              .new(hash_rocket_example_path) 
-            }
 
-    it 'replaces file content' do
-      subject.execute
-      content = File.read(hash_rocket_example_file)
-      expect(content).to eq colon_hash_example
+    context 'when passed a directory' do
+
+      subject { RubySyntaxUpgrader::UpgradeHashRocketSyntax
+                .new(hash_rocket_example_path) 
+              }
+
+      it 'replaces file content' do
+        subject.execute
+        content = File.read(hash_rocket_example_file)
+        expect(content).to eq colon_hash_example
+      end
+
+      it 'returns all selected for the given source path' do
+        files = subject.execute
+        expect(files).to eq [hash_rocket_example_file]
+      end
     end
 
-    it 'returns all selected for the given source path' do
-      files = subject.execute
-      expect(files).to eq [hash_rocket_example_file]
+    context 'when passed a filepath' do
+
+      subject { RubySyntaxUpgrader::UpgradeHashRocketSyntax
+                .new(hash_rocket_example_file) 
+              }
+
+      it 'replaces file content' do
+        subject.execute
+        content = File.read(hash_rocket_example_file)
+        expect(content).to eq colon_hash_example
+      end
+
+      it 'returns all selected for the given source path' do
+        files = subject.execute
+        expect(files).to eq [hash_rocket_example_file]
+      end
     end
 
   end
