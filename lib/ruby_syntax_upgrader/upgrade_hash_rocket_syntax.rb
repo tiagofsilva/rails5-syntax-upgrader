@@ -2,37 +2,28 @@ module RubySyntaxUpgrader
 	class UpgradeHashRocketSyntax
 		include RubySyntaxUpgrader::RegexReplacer
 
-		attr_accessor :source, :commit
-
-		def initialize(source:, commit: true)
+		def initialize(source)
 			@source = source
-			@commit = commit
 			raise 'Source file must be passed' unless source
 		end
 
 		def execute
-			files = File.file?(source) ? [source] : files_from_source_dir
-			files.each do |file|
-				regex_replace(
-					file: file,
-					commit: commit,
-					pattern: HASH_ROCKET_REGEX[:pattern],
-					replacement: HASH_ROCKET_REGEX[:replacement]
-				)
-			end
+			regex_replace(
+				source: source,
+				pattern: HASH_ROCKET_REGEX[:pattern],
+				replacement: HASH_ROCKET_REGEX[:replacement]
+			)
 		end
 
 	private
 
-		HASH_ROCKET_REGEX = {
-			pattern: /:([a-z0-9_]+)\s=>(\s[a-zA-Z0-9_.'"{}\[\]]+)/,
-			replacement: '\1:\2'
-		}
+		RUBY_SYMBOL = /:([a-z0-9_]+)/
+		MULTIPLE_TYPES_OR_SYMBOL = /(\s)?([a-zA-Z0-9_.'"{}\[\]\/]+|#{RUBY_SYMBOL})/
 
-		def files_from_source_dir
-			Dir[File.join(source, '**/*')]
-				.select { |f| ['.rb', '.erb'].include?(File.extname(f)) }	
-		end
+		HASH_ROCKET_REGEX = {
+			pattern: Regexp.new(/#{RUBY_SYMBOL}\s?=>#{MULTIPLE_TYPES_OR_SYMBOL}/),
+			replacement: '\1: \3'
+		}
 
 	end
 end

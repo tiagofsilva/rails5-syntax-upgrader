@@ -1,8 +1,8 @@
 namespace :upgrade do
   namespace :syntax do
     desc "Upgrades Ruby's old hash rocket syntax to column syntax"
-    task :hash, [:source, :commit] do |t, args|
-      RubySyntaxUpgrader::UpgradeHashRocketSyntax.new(source: args.source, commit: args.commit).execute
+    task :hash, [:source] do |t, args|
+      RubySyntaxUpgrader::UpgradeHashRocketSyntax.new(args.source).execute
     end
 
     desc "Upgrades Rails 3/4 controller tests to use Rails 5 syntax"
