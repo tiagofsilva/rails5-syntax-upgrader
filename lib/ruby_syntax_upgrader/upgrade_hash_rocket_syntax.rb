@@ -17,11 +17,11 @@ module RubySyntaxUpgrader
 
 	private
 
-		RUBY_SYMBOL = /:([a-z0-9_]+)/
-		MULTIPLE_TYPES_OR_SYMBOL = /(\s)?([a-zA-Z0-9_.'"{}\[\]\/]+|#{RUBY_SYMBOL})/
+		RUBY_SYMBOL_REGEX = /:([a-z0-9_]+)/
+		MULTIPLE_TYPES_OR_SYMBOL_REGEX = /(\s)?([a-zA-Z0-9_.'"{}\[\]\/]+|#{RUBY_SYMBOL_REGEX})/
 
 		HASH_ROCKET_REGEX = {
-			pattern: Regexp.new(/#{RUBY_SYMBOL}\s?=>#{MULTIPLE_TYPES_OR_SYMBOL}/),
+			pattern: Regexp.new(/#{RUBY_SYMBOL_REGEX}\s?=>#{MULTIPLE_TYPES_OR_SYMBOL_REGEX}/),
 			replacement: '\1: \3'
 		}
 
