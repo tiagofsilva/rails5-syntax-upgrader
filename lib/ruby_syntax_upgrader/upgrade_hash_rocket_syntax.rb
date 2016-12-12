@@ -2,14 +2,11 @@ module RubySyntaxUpgrader
 	class UpgradeHashRocketSyntax
 		include RubySyntaxUpgrader::RegexReplacer
 
-		def initialize(source)
-			@source = source
-			raise 'Source file must be passed' unless source
-		end
+		def replace(*inputs)
+			return if inputs.nil? || (inputs.respond_to?(:each) && inputs.flatten.empty?)
 
-		def execute
 			regex_replace(
-				source: source,
+				inputs: inputs,
 				pattern: HASH_ROCKET_REGEX[:pattern],
 				replacement: HASH_ROCKET_REGEX[:replacement]
 			)
