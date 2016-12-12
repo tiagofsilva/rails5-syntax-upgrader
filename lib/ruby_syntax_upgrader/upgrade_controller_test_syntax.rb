@@ -1,5 +1,5 @@
 module RubySyntaxUpgrader
-  class UpgradeRailsControllerTestSyntax
+  class UpgradeControllerTestSyntax
     include RubySyntaxUpgrader::RegexReplacer
 
     def initialize(source)
@@ -19,7 +19,7 @@ module RubySyntaxUpgrader
 
     RUBY_SYMBOL_REGEX = /:[a-z0-9_]+/
     RUBY_STRING_REGEX = /[a-z0-9_'"]+/
-    CONTROLLER_ACTION_REGEX = /#{RUBY_SYMBOL_REGEX}|RUBY_STRING_REGEX/
+    CONTROLLER_ACTION_REGEX = /#{RUBY_SYMBOL_REGEX}|#{RUBY_STRING_REGEX}/
     HTTP_METHODS_REGEX = /get|post|patch|put|delete/
 
     TEST_CASE_CONTROLLER_REQUEST_REGEX = {

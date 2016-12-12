@@ -7,7 +7,7 @@ namespace :upgrade do
 
     desc "Upgrades Rails controller tests to use Rails 5 syntax"
     task :controller_test_case, [:source] do |t, args|
-      RubySyntaxUpgrader::UpgradeRails5TestCaseSyntax.new(args.source).execute
+      RubySyntaxUpgrader::UpgradeControllerTestSyntax.new(args.source).execute
     end
   end  
 end
