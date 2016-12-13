@@ -4,5 +4,7 @@ module RubySyntaxUpgrader
 end
 
 require_relative 'ruby_syntax_upgrader/regex_replacer'
+require_relative 'ruby_syntax_upgrader/file_handler'
+require_relative 'ruby_syntax_upgrader/upgrade_syntax'
 require_relative 'ruby_syntax_upgrader/upgrade_hash_rocket_syntax'
 require_relative 'ruby_syntax_upgrader/upgrade_controller_test_syntax'
