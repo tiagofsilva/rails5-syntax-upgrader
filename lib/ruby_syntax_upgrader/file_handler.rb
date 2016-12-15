@@ -7,14 +7,10 @@ module RubySyntaxUpgrader
 			@source = source
 		end
 
-		def read
-			input = files_from_source.map { |file| { file: file, content: File.read(file) } }
-			@updated_input = yield(input)
-			self
-		end
-
-		def write_back
-			updated_input.flatten.each do |file_content|
+		def read_and_write_back
+			inputs = files_from_source.map { |file| { file: file, content: File.read(file) } }
+			@updated_input = yield(inputs)
+			@updated_input.each do |file_content|
 				File.write(file_content[:file], file_content[:content])
 			end
 		end

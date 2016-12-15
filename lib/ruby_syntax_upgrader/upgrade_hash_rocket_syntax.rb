@@ -2,11 +2,11 @@ module RubySyntaxUpgrader
 	class UpgradeHashRocketSyntax
 		include RubySyntaxUpgrader::RegexReplacer
 
-		def replace(*inputs)
-			return if inputs.nil? || (inputs.respond_to?(:each) && inputs.flatten.empty?)
+		def replace(input)
+			return if input.nil?
 
 			regex_replace(
-				inputs: inputs,
+				input: input,
 				pattern: HASH_ROCKET_REGEX[:pattern],
 				replacement: HASH_ROCKET_REGEX[:replacement]
 			)

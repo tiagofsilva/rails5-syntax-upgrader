@@ -11,13 +11,12 @@ module RubySyntaxUpgrader
 		end
 
 		def execute
-			handler.read do |files_contents|
+			handler.read_and_write_back do |files_contents|
 				files_contents.map do |file_content|
 					file_content[:content] = replacer.replace(file_content[:content])
 					file_content
 				end
 			end
-			.write_back
 		end
 
 	end
