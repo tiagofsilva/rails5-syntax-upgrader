@@ -3,11 +3,12 @@ module RubySyntaxUpgrader
 
 		attr_reader :source, :handler, :replacer
 
-		def initialize(source)
+		def initialize(source, type)
 			raise 'A source filepath is required' if source.nil?
 			@source = source
 			@handler = FileHandler.new(source)
-			@replacer = UpgradeHashRocketSyntax.new
+			klass = Module.const_get(CLASS_FOR_FUNCTION[type])
+			@replacer = klass.new
 		end
 
 		def execute
@@ -19,5 +20,13 @@ module RubySyntaxUpgrader
 			end
 		end
 
+	private 
+
+		CLASS_FOR_FUNCTION = {
+			hash: 'RubySyntaxUpgrader::UpgradeHashRocketSyntax',
+			test_case_verbs: 'RubySyntaxUpgrader::UpgradeControllerTestSyntax'
+		}
+
 	end
+		
 end
