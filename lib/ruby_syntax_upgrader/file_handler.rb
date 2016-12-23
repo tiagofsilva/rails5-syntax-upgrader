@@ -8,6 +8,7 @@ module RubySyntaxUpgrader
 		end
 
 		def read_and_write_back
+			raise 'FileHandler#read_and_write_back requires a block' unless block_given?
 			inputs = files_from_source.map { |file| { file: file, content: File.read(file) } }
 			@updated_input = yield(inputs)
 			@updated_input.each do |file_content|
