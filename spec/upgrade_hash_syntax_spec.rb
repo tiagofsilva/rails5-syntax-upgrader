@@ -8,7 +8,7 @@ describe RubySyntaxUpgrader::UpgradeHashRocketSyntax do
 
     context 'when nil is passed' do
       it 'returns nil' do
-        expect(RubySyntaxUpgrader::UpgradeHashRocketSyntax.new.replace(nil)).to eq nil
+        expect(subject.replace(nil)).to eq nil
       end
     end
 
