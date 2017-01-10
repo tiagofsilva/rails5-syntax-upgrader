@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe RubySyntaxUpgrader::UpgradeHashRocketSyntax do
 
-  describe '#execute' do
+  describe '#replace' do
 
     subject { RubySyntaxUpgrader::UpgradeHashRocketSyntax.new }
 
