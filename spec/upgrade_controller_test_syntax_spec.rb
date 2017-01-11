@@ -40,7 +40,7 @@ describe RubySyntaxUpgrader::UpgradeControllerTestSyntax do
         expect(subject.replace("get :put, id: 9999")).to eq "get :put, params: { id: 9999 }"
       end
 
-      xit 'does not replace when param already exist' do
+      it 'does not replace when param already exist' do
         expect(subject.replace("put :update, params: { id: 9999 }")).to eq "put :update, params: { id: 9999 }"
       end
 
@@ -77,7 +77,7 @@ describe RubySyntaxUpgrader::UpgradeControllerTestSyntax do
         expect(subject.replace("get :put, :id => 9999")).to eq "get :put, params: { :id => 9999 }"
       end
 
-      xit 'does not replace when param already exist' do
+      it 'does not replace when param already exist' do
         expect(subject.replace("put :update, params: { :id => 9999 }")).to eq "put :update, params: { :id => 9999 }"
       end
 
