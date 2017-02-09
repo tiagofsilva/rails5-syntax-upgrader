@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    ruby_syntax_upgrader (0.0.1)
-      awesome_print (~> 1.7.0)
+    ruby_syntax_upgrader (0.1.0)
+      awesome_print (~> 1.7)
 
 GEM
   remote: https://rubygems.org/
@@ -35,9 +35,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.13.6)
-  pry (~> 0.10.4)
-  rake (~> 11.2.2)
+  bundler (~> 1.13)
+  pry (~> 0.10)
+  rake (~> 11.2)
   rspec (~> 3.5.0)
   ruby_syntax_upgrader!
 
