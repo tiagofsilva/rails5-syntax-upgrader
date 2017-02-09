@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby_syntax_upgrader"
-  spec.version       = '0.1.0'
+  spec.version       = '0.1.1'
   spec.authors       = ["Tiago Farias Silva"]
   spec.email         = ["aeroboom@gmail.com"]
   spec.summary       = %q{A few Rake tasks to upgrade Ruby and Rails syntax on a project(Ruby 2.3 and Rails 5)}
