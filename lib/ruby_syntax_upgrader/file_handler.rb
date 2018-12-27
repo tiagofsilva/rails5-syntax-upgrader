@@ -1,31 +1,31 @@
 module RubySyntaxUpgrader
-	class FileHandler
+  class FileHandler
 
-		attr_reader :source, :updated_input
+    attr_reader :source, :updated_input
 
-		def initialize(source)
-			@source = source
-		end
+    def initialize(source)
+      @source = source
+    end
 
-		def read_and_write_back
-			raise 'FileHandler#read_and_write_back requires a block' unless block_given?
-			inputs = files_from_source.map { |file| { file: file, content: File.read(file) } }
-			@updated_input = yield(inputs)
-			@updated_input.each do |file_content|
-				File.write(file_content[:file], file_content[:content])
-			end
-		end
+    def read_and_write_back
+      raise 'FileHandler#read_and_write_back requires a block' unless block_given?
+      inputs = files_from_source.map { |file| { file: file, content: File.read(file) } }
+      @updated_input = yield(inputs)
+      @updated_input.each do |file_content|
+        File.write(file_content[:file], file_content[:content])
+      end
+    end
 
-	private
+  private
 
-		def files_from_source
-			if File.file?(source)
-				[source]
-			else
-				Dir[File.join(source, '**/*')]
-					.select { |filename| ['.rb', '.erb'].include?(File.extname(filename)) }
-			end
-		end
+    def files_from_source
+      if File.file?(source)
+        [source]
+      else
+        Dir[File.join(source, '**/*')]
+          .select { |filename| ['.rb', '.erb'].include?(File.extname(filename)) }
+      end
+    end
 
-	end
+  end
 end

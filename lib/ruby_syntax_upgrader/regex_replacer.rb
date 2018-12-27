@@ -1,9 +1,9 @@
 module RubySyntaxUpgrader
-	module RegexReplacer
+  module RegexReplacer
 
-		def regex_replace(input:, pattern:, replacement:)
-			input.gsub(pattern, replacement)
-		end
+    def regex_replace(input:, pattern:, replacement:)
+      input.gsub(pattern, replacement)
+    end
 
-	end
+  end
 end
